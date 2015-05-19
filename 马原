@@ -1,0 +1,17 @@
+var now = 0;
+var sleepTime = 10*1000;
+var len = 76;
+
+var clickLink = function () {
+	var thisElement = document.getElementsByTagName("iframe")[1].contentDocument.getElementById("w_code").contentDocument.getElementsByTagName("tr")[2].getElementsByTagName("nobr")[now];
+
+	if (thisElement.getElementsByClassName("incomplete").length == 0) {
+		now++;
+		if (now == len) {return false;}
+		document.getElementsByTagName("iframe")[1].contentDocument.getElementById("w_code").contentDocument.getElementsByTagName("tr")[2].getElementsByTagName("a")[now].click();
+	}
+	
+	setTimeout("clickLink()", sleepTime);
+}
+
+clickLink();
